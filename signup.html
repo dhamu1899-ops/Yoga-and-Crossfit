@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up — Stackly Yoga &amp; CrossFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<style>
+.pw-strength{display:flex;gap:6px;margin-top:9px}
+.pw-strength span{height:5px;flex:1;border-radius:99px;background:rgba(136,159,176,.2);transition:.35s var(--ease)}
+.pw-strength.s1 span:nth-child(1){background:#ff6b6b}
+.pw-strength.s2 span:nth-child(-n+2){background:#ffd166}
+.pw-strength.s3 span:nth-child(-n+3){background:#58c8ff}
+.pw-strength.s4 span{background:#4ade80}
+.pw-label{font-size:12.5px;color:var(--muted);margin-top:7px;display:flex;justify-content:space-between}
+.goal-picks{display:flex;flex-wrap:wrap;gap:9px}
+.goal-picks input{display:none}
+.goal-picks label{
+  font-size:13.5px;font-family:var(--font-h);padding:9px 16px;border-radius:99px;cursor:pointer;
+  border:1.5px solid var(--line-strong);color:var(--muted);transition:.3s var(--ease);user-select:none;
+}
+.goal-picks label:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.goal-picks input:checked + label{background:rgba(100,255,218,.14);border-color:var(--accent);color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<a href="index.html" class="auth-close" aria-label="Close and go to home page"><i class="fa-solid fa-xmark"></i></a>
+
+<!-- Loader -->
+<div id="preloader" role="status" aria-live="polite">
+  <img class="loader-logo" src="assets/logo.svg" alt="">
+  <div class="spinner" aria-hidden="true"></div>
+  <div class="loader-text">Loading, please wait...</div>
+  <div class="loader-sub">Building your account…</div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+
+<main class="auth-page">
+  <!-- Visual brand panel -->
+  <aside class="auth-visual">
+    <div class="bgimg" style="background-image:url('assets/img/signup-visual.webp')"></div>
+    <div class="veil"></div>
+    <div class="av-inner">
+      <a href="index.html" class="brand" style="position:relative;z-index:2"><span class="brand-mark"><img src="assets/logo.svg" alt=""></span> Stack<b>ly</b></a>
+
+      <div class="auth-quote">
+        <div class="q-ic"><i class="fa-solid fa-bolt"></i></div>
+        <blockquote>“I joined for the free trial and never left. 4,800 members strong — and every one of them knows your name.”</blockquote>
+        <div class="who">
+          <img src="assets/img/avatar-women44.webp" alt="Priya Sharma">
+          <div><b>Priya Sharma</b><span>Member since 2024 · Vinyasa Flow</span></div>
+        </div>
+      </div>
+
+      <div class="auth-points">
+        <div class="pt"><i class="fa-solid fa-circle-check"></i> 7-day free trial</div>
+        <div class="pt"><i class="fa-solid fa-circle-check"></i> No credit card needed</div>
+        <div class="pt"><i class="fa-solid fa-circle-check"></i> Cancel anytime</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Form side -->
+  <section class="auth-form-side">
+    <div class="auth-box">
+      <a href="index.html" class="brand mb-4 d-inline-flex"><span class="brand-mark"><img src="assets/logo.svg" alt=""></span> Stack<b>ly</b></a>
+      <h2>Create your account</h2>
+      <p class="sub">Start your 7-day free trial — book your first class in under 2 minutes.</p>
+
+      <div class="auth-tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="false" onclick="location.href='login.html'">Log in</button>
+        <button class="on" type="button" role="tab" aria-selected="true">Sign up</button>
+      </div>
+
+      <form id="signupForm" novalidate>
+        <div class="form-row-2">
+          <div class="auth-field">
+            <label class="form-label-stack" for="sName">Full name</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" class="input-stack" id="sName" placeholder="John Doe" autocomplete="name" required minlength="3">
+            </div>
+            <div class="field-err" id="e-sName"><i class="fa-solid fa-circle-exclamation"></i> Enter your name (min 3 characters).</div>
+          </div>
+          <div class="auth-field">
+            <label class="form-label-stack" for="sPhone">Mobile number</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-phone"></i>
+              <input type="tel" class="input-stack" id="sPhone" placeholder="98765 43210" autocomplete="tel">
+            </div>
+            <div class="field-err" id="e-sPhone"><i class="fa-solid fa-circle-exclamation"></i> Enter a valid 10-digit mobile.</div>
+          </div>
+        </div>
+
+        <div class="auth-field">
+          <label class="form-label-stack" for="sEmail">Email address</label>
+          <div class="input-icon">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" class="input-stack" id="sEmail" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="field-err" id="e-sEmail"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.</div>
+        </div>
+
+        <div class="auth-field">
+          <label class="form-label-stack" for="sPass">Password</label>
+          <div class="input-icon">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" class="input-stack" id="sPass" placeholder="Min. 8 characters" autocomplete="new-password" required minlength="8">
+            <button type="button" class="toggle-pass" data-target="sPass" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <div class="pw-strength" id="pwBar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <div class="pw-label"><span id="pwText">Password strength</span><span id="pwTip">Use 8+ chars, numbers &amp; symbols</span></div>
+          <div class="field-err" id="e-sPass"><i class="fa-solid fa-circle-exclamation"></i> Password must be at least 8 characters.</div>
+        </div>
+
+        <div class="auth-field">
+          <label class="form-label-stack" for="sGoal">Primary goal <span class="text-muted">(optional)</span></label>
+          <div class="goal-picks">
+            <input type="radio" name="goal" id="g1" value="Fat Loss"><label for="g1">🔥 Fat Loss</label>
+            <input type="radio" name="goal" id="g2" value="Strength"><label for="g2">💪 Strength</label>
+            <input type="radio" name="goal" id="g3" value="Flexibility"><label for="g3">🧘 Flexibility</label>
+            <input type="radio" name="goal" id="g4" value="Endurance"><label for="g4">🏃 Endurance</label>
+            <input type="radio" name="goal" id="g5" value="General Fitness"><label for="g5">✅ General Fitness</label>
+          </div>
+        </div>
+
+        <div class="form-check d-flex align-items-start gap-2 mb-3 mt-2">
+          <input class="form-check-input mt-1" type="checkbox" id="sTerms" required style="accent-color:#64ffda;width:18px;height:18px">
+          <label class="form-check-label" for="sTerms" style="font-size:13.5px;color:var(--muted)">
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. <span style="color:var(--accent-2)">*</span>
+          </label>
+        </div>
+        <div class="field-err mb-3" id="e-sTerms" style="margin-top:-8px"><i class="fa-solid fa-circle-exclamation"></i> You must accept the terms to continue.</div>
+
+        <button type="submit" class="btn btn-primary-stack auth-btn" id="sSubmit">
+          Create free account <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <div class="auth-divider">or sign up with</div>
+        <div class="social-auth">
+          <button type="button" data-social="Google"><i class="fa-brands fa-google" style="color:#ea4335"></i> Google</button>
+          <button type="button" data-social="Facebook"><i class="fa-brands fa-facebook-f" style="color:#1877f2"></i> Facebook</button>
+        </div>
+
+        <div class="auth-switch">Already a member? <a href="login.html">Log in</a></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Stackly Yoga &amp; CrossFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body class="no-scroll">
+
+<div class="dash">
+  <!-- ===== Sidebar ===== -->
+  <aside class="side" id="side">
+    <a href="index.html" class="brand"><span class="brand-mark"><img src="assets/logo.svg" alt=""></span> Stack<b>ly</b></a>
+
+    <div class="side-label">Administration</div>
+    <ul class="side-nav">
+      <li><a href="#overview" class="on"><i class="fa-solid fa-gauge-high"></i> Dashboard</a></li>
+      <li><a href="#members"><i class="fa-solid fa-users"></i> Members <span class="badge">8</span></a></li>
+      <li><a href="#classesMgr"><i class="fa-solid fa-dumbbell"></i> Classes</a></li>
+      <li><a href="#revenue"><i class="fa-solid fa-indian-rupee-sign"></i> Revenue</a></li>
+      <li><a href="#messages"><i class="fa-solid fa-envelope"></i> Messages <span class="badge">3</span></a></li>
+    </ul>
+
+    <div class="side-label">Switch</div>
+    <ul class="side-nav">
+      <li><a href="dashboard.html"><i class="fa-solid fa-user"></i> User View</a></li>
+      <li><a href="index.html"><i class="fa-solid fa-globe"></i> Main Website</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-headset"></i> Support</a></li>
+    </ul>
+
+    <div class="side-foot">
+      <div class="side-user">
+        <img src="assets/img/avatar-68.webp" alt="Admin avatar">
+        <div>
+          <b id="aNameSide">Admin</b>
+          <span style="color:var(--accent-2)">Administrator</span>
+        </div>
+      </div>
+      <ul class="side-nav">
+        <li><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="side-overlay" id="sideOverlay"></div>
+
+  <!-- ===== Main ===== -->
+  <div class="dash-main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open sidebar"><i class="fa-solid fa-bars"></i></button>
+      <div>
+        <h4>Admin Dashboard</h4>
+        <div class="crumb">Home / Admin</div>
+      </div>
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" placeholder="Search members, classes…" id="adminSearch" aria-label="Search">
+      </div>
+      <button class="icon-btn" id="notifBtn" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+      <button class="avatar-btn" id="avatarBtn">
+        <img src="assets/img/avatar-68.webp" alt="Admin">
+        <b id="aNameTop">Admin</b> <i class="fa-solid fa-chevron-down" style="font-size:11px;color:var(--muted)"></i>
+      </button>
+    </header>
+
+    <div class="dash-body">
+      <!-- Overview banner -->
+      <div class="welcome-banner" id="overview">
+        <div style="position:relative;z-index:2">
+          <h2 id="adminWelcome">Studio Report 📊</h2>
+          <p>November 2026 is tracking <b class="text-accent">+18% ahead</b> of October. 3 new members joined today and class occupancy is at 84%.</p>
+        </div>
+        <div class="wb-cta">
+          <button class="btn btn-primary-stack" id="addMemberBtn"><i class="fa-solid fa-user-plus"></i> Add Member</button>
+          <button class="btn btn-ghost" id="addClassBtn"><i class="fa-solid fa-plus"></i> New Class</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-grid">
+        <div class="stat-card reveal">
+          <div class="stat-top"><span class="stat-ic"><i class="fa-solid fa-users"></i></span><span class="trend">+18</span></div>
+          <div class="val"><span data-count="4812">0</span></div>
+          <div class="lbl">Total members</div>
+        </div>
+        <div class="stat-card reveal" style="--d:.08s">
+          <div class="stat-top"><span class="stat-ic warm"><i class="fa-solid fa-indian-rupee-sign"></i></span><span class="trend">+12.4%</span></div>
+          <div class="val">₹<span data-count="8.4" data-dec="1">0</span>L</div>
+          <div class="lbl">Revenue this month</div>
+        </div>
+        <div class="stat-card reveal" style="--d:.16s">
+          <div class="stat-top"><span class="stat-ic purple"><i class="fa-solid fa-calendar-check"></i></span><span class="trend">+34</span></div>
+          <div class="val"><span data-count="1246">0</span></div>
+          <div class="lbl">Class bookings (30d)</div>
+        </div>
+        <div class="stat-card reveal" style="--d:.24s">
+          <div class="stat-top"><span class="stat-ic gold"><i class="fa-solid fa-chart-pie"></i></span><span class="trend down">-2%</span></div>
+          <div class="val"><span data-count="94" data-suffix="%">0</span></div>
+          <div class="lbl">Occupancy rate</div>
+        </div>
+      </div>
+
+      <!-- Revenue + donut -->
+      <div class="grid-2" id="revenue">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h3>Revenue Overview</h3><p>Monthly revenue — last 8 months (₹ lakhs)</p></div>
+            <select class="input-stack" style="width:auto;padding:10px 40px 10px 15px;font-size:13.5px">
+              <option>2026</option><option>2025</option>
+            </select>
+          </div>
+          <div class="bars">
+            <div class="bar-col"><div class="bar" data-h="52" style="--bd:.05s"><span>4.2</span></div><small>Apr</small></div>
+            <div class="bar-col"><div class="bar" data-h="60" style="--bd:.12s"><span>4.9</span></div><small>May</small></div>
+            <div class="bar-col"><div class="bar" data-h="55" style="--bd:.19s"><span>4.5</span></div><small>Jun</small></div>
+            <div class="bar-col"><div class="bar" data-h="70" style="--bd:.26s"><span>5.7</span></div><small>Jul</small></div>
+            <div class="bar-col"><div class="bar" data-h="66" style="--bd:.33s"><span>5.4</span></div><small>Aug</small></div>
+            <div class="bar-col"><div class="bar" data-h="80" style="--bd:.4s"><span>6.6</span></div><small>Sep</small></div>
+            <div class="bar-col"><div class="bar" data-h="86" style="--bd:.47s"><span>7.1</span></div><small>Oct</small></div>
+            <div class="bar-col"><div class="bar warm" data-h="100" style="--bd:.54s"><span>8.4</span></div><small>Nov</small></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Membership Mix</h3><p>Active plans distribution</p></div></div>
+          <div class="donut-wrap">
+            <div class="donut">
+              <svg viewBox="0 0 120 120" width="180" height="180" aria-label="Membership mix donut chart">
+                <circle class="track" cx="60" cy="60" r="48"/>
+                <circle class="val-c" cx="60" cy="60" r="48" stroke="#64ffda" data-dash="130 171"/>
+                <circle class="val-c" cx="60" cy="60" r="48" stroke="#ff7e5f" stroke-dasharray="0 999" data-dash="88 213" data-rotate="131" style="transition-delay:.6s"/>
+                <circle class="val-c" cx="60" cy="60" r="48" stroke="#a78bfa" stroke-dasharray="0 999" data-dash="55 246" data-rotate="220" style="transition-delay:1s"/>
+              </svg>
+              <div class="center"><div><b>4,812</b><span>Members</span></div></div>
+            </div>
+            <div class="legend">
+              <div><i style="background:#64ffda"></i> Performance · 44%</div>
+              <div><i style="background:#ff7e5f"></i> Starter · 30%</div>
+              <div><i style="background:#a78bfa"></i> Elite · 26%</div>
+              <div class="mt-3" style="border-top:1px solid var(--line);padding-top:12px;font-size:13px">Churn rate <b class="text-accent">2.1%</b> — lowest this year</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Members table -->
+      <div class="panel" id="members">
+        <div class="panel-head">
+          <div><h3>Member Management</h3><p>Search, filter and manage studio members</p></div>
+          <div class="d-flex gap-2 flex-wrap">
+            <div class="search-box" style="margin-left:0;width:220px">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" placeholder="Filter members…" id="memberFilter" aria-label="Filter members">
+            </div>
+            <select class="input-stack" id="statusFilter" style="width:auto;padding:11px 40px 11px 15px;font-size:13.5px">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <button class="btn btn-primary-stack btn-sm" id="addMemberBtn2"><i class="fa-solid fa-user-plus"></i> Add</button>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table class="table-stack" id="memberTable">
+            <thead>
+              <tr><th>Member</th><th>Plan</th><th>Joined</th><th>Sessions</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="memberRows"><!-- rendered by admin.js --></tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2" style="font-size:13.5px;color:var(--muted)">
+          <span id="memberCount">Showing 8 members</span>
+          <div class="d-flex gap-2">
+            <button class="mini-btn" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="mini-btn" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Classes manager + messages -->
+      <div class="grid-2" id="classesMgr">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h3>Class Schedule</h3><p>Today's sessions and occupancy</p></div>
+            <button class="btn btn-primary-stack btn-sm" id="addClassBtn2"><i class="fa-solid fa-plus"></i> New Class</button>
+          </div>
+          <div class="table-scroll">
+            <table class="table-stack">
+              <thead><tr><th>Class</th><th>Time</th><th>Coach</th><th>Booked</th><th>Action</th></tr></thead>
+              <tbody id="classRows"><!-- rendered by admin.js --></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" id="messages">
+          <div class="panel-head"><div><h3>Recent Messages</h3><p>From the contact form</p></div>
+            <span class="pill pending">3 new</span></div>
+          <div class="feed">
+            <div class="feed-item">
+              <span class="feed-ic"><i class="fa-solid fa-envelope"></i></span>
+              <div style="flex:1">
+                <p><b>Ananya R.</b> — Membership &amp; Pricing</p>
+                <small>Do you offer student discounts on the Performance plan?</small>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn btn-primary-stack btn-sm msg-reply">Reply</button>
+                  <button class="btn btn-ghost btn-sm msg-done">Mark read</button>
+                </div>
+              </div>
+            </div>
+            <div class="feed-item">
+              <span class="feed-ic"><i class="fa-solid fa-envelope"></i></span>
+              <div style="flex:1">
+                <p><b>Vignesh K.</b> — Book a Free Trial Class</p>
+                <small>I'd like to try the CrossFit Engine class this Saturday morning.</small>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn btn-primary-stack btn-sm msg-reply">Reply</button>
+                  <button class="btn btn-ghost btn-sm msg-done">Mark read</button>
+                </div>
+              </div>
+            </div>
+            <div class="feed-item">
+              <span class="feed-ic"><i class="fa-solid fa-envelope"></i></span>
+              <div style="flex:1">
+                <p><b>HR — TechnoCorp</b> — Corporate Wellness</p>
+                <small>We need a 25-employee wellness package starting January.</small>
+                <div class="d-flex gap-2 mt-2">
+                  <button class="btn btn-primary-stack btn-sm msg-reply">Reply</button>
+                  <button class="btn btn-ghost btn-sm msg-done">Mark read</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="panel">
+        <div class="panel-head"><div><h3>Admin Activity Log</h3><p>Recent actions across the studio system</p></div></div>
+        <div class="feed">
+          <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-user-plus"></i></span><div><p><b>New member registered</b> — Kavya S. joined the Performance plan.</p><small>12 minutes ago</small></div></div>
+          <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-indian-rupee-sign"></i></span><div><p><b>Payment received</b> — ₹2,999 from Rahul V. (Performance, auto-renew).</p><small>1 hour ago</small></div></div>
+          <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-dumbbell"></i></span><div><p><b>Class updated</b> — Thursday Strength Lab moved to 6:30 PM.</p><small>3 hours ago</small></div></div>
+          <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-user-slash"></i></span><div><p><b>Membership lapsed</b> — 2 members moved to inactive after grace period.</p><small>Yesterday</small></div></div>
+        </div>
+      </div>
+
+      <footer style="text-align:center;padding:10px 0 30px;color:var(--muted);font-size:13.5px">
+        <a href="index.html" class="brand d-inline-flex mb-2" style="font-size:18px"><span class="brand-mark"><img src="assets/logo.svg" alt="" style="height:26px"></span> Stack<b>ly</b></a><br>
+        © <span class="year">2026</span> Stackly Admin · <a href="index.html">Main site</a> · <a href="contact.html">Support</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<!-- Add member modal -->
+<div class="modal-backdrop-stack" id="memberModal">
+  <div class="modal-card">
+    <h3 id="memberModalTitle">Add New Member</h3>
+    <p class="sub">Create a member record — login credentials are emailed automatically.</p>
+    <form id="memberForm" novalidate>
+      <div class="form-row-2 mb-3">
+        <div>
+          <label class="form-label-stack" for="mName">Full name <span class="req">*</span></label>
+          <input type="text" class="input-stack" id="mName" placeholder="Member name" required minlength="3">
+          <div class="field-err" id="e-mName"><i class="fa-solid fa-circle-exclamation"></i> Enter at least 3 characters.</div>
+        </div>
+        <div>
+          <label class="form-label-stack" for="mEmail">Email <span class="req">*</span></label>
+          <input type="email" class="input-stack" id="mEmail" placeholder="member@example.com" required>
+          <div class="field-err" id="e-mEmail"><i class="fa-solid fa-circle-exclamation"></i> Enter a valid email.</div>
+        </div>
+      </div>
+      <div class="form-row-2 mb-3">
+        <div>
+          <label class="form-label-stack" for="mPlan">Plan</label>
+          <select class="input-stack" id="mPlan"><option>Starter</option><option selected>Performance</option><option>Elite</option></select>
+        </div>
+        <div>
+          <label class="form-label-stack" for="mStatus">Status</label>
+          <select class="input-stack" id="mStatus"><option value="active" selected>Active</option><option value="pending">Pending</option><option value="inactive">Inactive</option></select>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary-stack"><i class="fa-solid fa-user-plus"></i> Save Member</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add class modal -->
+<div class="modal-backdrop-stack" id="classModal">
+  <div class="modal-card">
+    <h3>Schedule New Class</h3>
+    <p class="sub">Add a session to the studio timetable.</p>
+    <form id="classForm" novalidate>
+      <div class="mb-3">
+        <label class="form-label-stack" for="kName">Class name <span class="req">*</span></label>
+        <input type="text" class="input-stack" id="kName" placeholder="e.g. CrossFit Engine" required minlength="3">
+        <div class="field-err" id="e-kName"><i class="fa-solid fa-circle-exclamation"></i> Enter at least 3 characters.</div>
+      </div>
+      <div class="form-row-2 mb-3">
+        <div>
+          <label class="form-label-stack" for="kTime">Time <span class="req">*</span></label>
+          <input type="text" class="input-stack" id="kTime" placeholder="e.g. 6:30 AM" required>
+          <div class="field-err" id="e-kTime"><i class="fa-solid fa-circle-exclamation"></i> Enter a time.</div>
+        </div>
+        <div>
+          <label class="form-label-stack" for="kCoach">Coach</label>
+          <select class="input-stack" id="kCoach"><option>Coach Arjun</option><option>Coach Meera</option><option>Coach Daniel</option><option>Coach Sofia</option></select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label-stack" for="kCap">Capacity</label>
+        <input type="number" class="input-stack" id="kCap" value="16" min="1" max="60">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary-stack"><i class="fa-solid fa-plus"></i> Schedule Class</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- notifications -->
+<div class="modal-backdrop-stack" id="notifModal">
+  <div class="modal-card" style="max-width:430px">
+    <h3>Notifications</h3>
+    <p class="sub">3 unread admin alerts.</p>
+    <div class="feed">
+      <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-triangle-exclamation"></i></span><div><p><b>Class at 92% capacity</b> — Saturday Partner WOD has 2 spots left.</p><small>20 min ago</small></div></div>
+      <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-credit-card"></i></span><div><p><b>Payment failed</b> — retry scheduled for 1 member.</p><small>2 hours ago</small></div></div>
+      <div class="feed-item"><span class="feed-ic"><i class="fa-solid fa-star"></i></span><div><p><b>New 5-star review</b> posted on Google.</p><small>Today</small></div></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost btn-sm" data-close-modal>Close</button>
+      <button class="btn btn-primary-stack btn-sm" data-close-modal>Mark all read</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash-toast" id="dashToast"><i class="fa-solid fa-circle-check"></i><span>Saved</span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+<script>document.querySelectorAll('.year').forEach(e=>e.textContent=new Date().getFullYear());</script>
+</body>
+</html>
